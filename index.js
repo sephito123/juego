@@ -9,6 +9,14 @@ var router_1 = __importDefault(require("./routes/router"));
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var server = server_1.default.instance;
+//configurar cabeceras http
+server.app.use((req,res,next)=>{
+	res.header('Access-Control-Allow-Origin','*');
+	res.header('Access-Control-Allow-Headers','Authorization,X-API-KEY,Origin,X-Requested-With, Content-Type,Accept,Access-Allow-Request-Mehodo');
+	res.header('Access-Control-Allow-Methods','GET,POST,OPTIONS,PUT,DELETE');
+	res.header('Allow','GET,POST,OPTIONS,PUT,DELETE');
+	next();
+});
 //BodyParser
 server.app.use(express_1.default.urlencoded({ extended: true }));
 server.app.use(express_1.default.json());
